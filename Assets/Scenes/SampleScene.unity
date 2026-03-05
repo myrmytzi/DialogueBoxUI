@@ -507,7 +507,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3429061582709787641, guid: 0cae8ab3f0079504d8b45a3e8fb858f8, type: 3}
+  m_Sprite: {fileID: -1024083372, guid: 794f6c1b8db35c147bde8c6d2a9dc64f, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -679,7 +679,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1021355130
 RectTransform:
   m_ObjectHideFlags: 0
@@ -822,7 +822,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1024010499}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1128379181}
+        m_TargetAssemblyTypeName: DialogueSystem.Dialogue.Runtime.DialogueController,
+          Assembly-CSharp
+        m_MethodName: HandleNext
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1024010499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -861,6 +874,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1024010496}
   m_CullTransparentMesh: 1
+--- !u!1 &1128379180
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1128379182}
+  - component: {fileID: 1128379181}
+  m_Layer: 0
+  m_Name: DialogueController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1128379181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128379180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c70f537656d746e390907aaf0906576b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueSystem.Dialogue.Runtime.DialogueController
+  sequence: {fileID: 11400000, guid: 73b176a4c5d913f4bafaa2285a0f4fc4, type: 2}
+  dialoguePanel: {fileID: 1021355129}
+  speakerNameText: {fileID: 1010250927}
+  portraitImage: {fileID: 837990413}
+  dialogueText: {fileID: 2123106159}
+--- !u!4 &1128379182
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128379180}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 285.7459, y: 115.9183, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1243201770
 GameObject:
   m_ObjectHideFlags: 0
@@ -1180,7 +1242,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1558574873}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1128379181}
+        m_TargetAssemblyTypeName: DialogueSystem.Dialogue.Runtime.DialogueController,
+          Assembly-CSharp
+        m_MethodName: HandleSkip
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1558574873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1552,7 +1627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 124393eee2414d939452940338e772af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueSystem.UI.TypewriterText
-  charactersPerSecond: 10
+  charactersPerSecond: 40
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1560,3 +1635,4 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 574767262}
   - {fileID: 1411806084}
+  - {fileID: 1128379182}
