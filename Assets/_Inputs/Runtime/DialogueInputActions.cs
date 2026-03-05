@@ -150,7 +150,7 @@ namespace InputSystem.Runtime
                 {
                     ""name"": """",
                     ""id"": ""ad6f4a28-0d40-484e-8da8-70f867a672d6"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
