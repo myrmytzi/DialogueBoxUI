@@ -4,11 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using DialogueSystem.Dialogue.Data;
 using DialogueSystem.UI;
+using InputSystem.Runtime;
 
 namespace DialogueSystem.Dialogue.Runtime {
     public class DialogueController : MonoBehaviour {
         [Header("Data")]
         [SerializeField] private DialogueSequence sequence;
+
+        [SerializeField] private InputReader inputReader;
 
         [Header("UI References")]
         [SerializeField] private GameObject dialoguePanel;
@@ -28,7 +31,19 @@ namespace DialogueSystem.Dialogue.Runtime {
             typewriter = dialogueText.GetComponent<TypewriterText>();
             if (!dialoguePanel.activeInHierarchy) { dialoguePanel.SetActive(true); }
         }
+
+        private void OnEnable() {
+            inputReader.NextPressed += HandleNext;
+            inputReader.SkipPressed += HandleSkip;
+            inputReader.OnInputDeviceChanged += HandleDeviceChanged;
+        }
         
+        private void OnDisable() {
+            inputReader.NextPressed -= HandleNext;
+            inputReader.SkipPressed -= HandleSkip;
+            inputReader.OnInputDeviceChanged -= HandleDeviceChanged;
+            
+        }
 
         private void Start() {
             StartSequence();
@@ -74,6 +89,10 @@ namespace DialogueSystem.Dialogue.Runtime {
         private void EndDialogue() {
             dialoguePanel.SetActive(false);
             gameObject.SetActive(false);
+        }
+
+        private void HandleDeviceChanged(InputDeviceType newDevice) {
+            // update glyphs
         }
     }
 }
