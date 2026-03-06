@@ -107,7 +107,7 @@ namespace DialogueSystem.UI {
             };
         }
 
-        private bool IsPunctuation(char c) {
+        private static bool IsPunctuation(char c) {
             return c switch {
                 ',' or '.' or '!' or '?' => true,
                 _ => false

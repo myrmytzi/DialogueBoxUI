@@ -57,12 +57,14 @@ namespace DialogueSystem.Dialogue.Runtime {
         }
 
         private void Start() {
-            if (!dialoguePanel.activeInHierarchy) { dialoguePanel.SetActive(true); }
-            StartSequence();
+            dialoguePanel.SetActive(false);
         }
 
-        private void StartSequence() {
+        public void StartSequence() {
+            dialoguePanel.SetActive(true);
             currentIndex = 0;
+            currentRawText = null;
+            currentProcessedText = null;
             DisplayCurrentEntry();
         }
 
@@ -104,7 +106,6 @@ namespace DialogueSystem.Dialogue.Runtime {
 
         private void EndDialogue() {
             dialoguePanel.SetActive(false);
-            gameObject.SetActive(false);
         }
 
         private void HandleDeviceChanged(InputDeviceType device) {
