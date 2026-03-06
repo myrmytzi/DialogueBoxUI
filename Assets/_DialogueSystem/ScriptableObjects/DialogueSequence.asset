@@ -18,7 +18,7 @@ MonoBehaviour:
     text: This is a test dialogue. Press [next] to continue.
   - speakerName: Slime
     portrait: {fileID: -3429061582709787641, guid: 0cae8ab3f0079504d8b45a3e8fb858f8, type: 3}
-    text: 'This is the 2nd entry. You can press [skip] to end the dialogue. '
+    text: This is the 2nd entry. You can press [skip] to end the dialogue.
   - speakerName: Slime
     portrait: {fileID: -3429061582709787641, guid: 0cae8ab3f0079504d8b45a3e8fb858f8, type: 3}
     text: This is the 3rd and final entry.
