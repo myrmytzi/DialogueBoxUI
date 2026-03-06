@@ -10,13 +10,13 @@ namespace DialogueSystem.UI {
         }
         
         private System.Collections.IEnumerator TestRoutine() {
-            typewriter.Play("This line should be interrupted halfway.");
+            typewriter.StartTyping("This line should be interrupted halfway.");
             yield return new WaitForSeconds(1f);
             
-            typewriter.Play("Second line should start cleanly.");
+            typewriter.StartTyping("Second line should start cleanly.");
             yield return new WaitForSeconds(1f);
             
-            typewriter.Play("Third line replaces second.");
+            typewriter.StartTyping("Third line replaces second.");
         }
     }
 }

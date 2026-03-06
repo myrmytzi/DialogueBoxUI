@@ -8,28 +8,28 @@ namespace DialogueSystem.UI {
     public sealed class TypewriterText : MonoBehaviour {
         [SerializeField] private float charactersPerSecond = 40f;
 
-        private TMP_Text textComponent;
+        private TMP_Text text;
         private Coroutine typingRoutine;
         private bool isTyping;
 
         public bool IsTyping => isTyping;
+        public int VisibleCharacterCount => text.maxVisibleCharacters;
 
         public event Action OnTypingFinished;
 
         private void Awake() {
-            textComponent = GetComponent<TMP_Text>();
+            text = GetComponent<TMP_Text>();
         }
 
-        public void Play(string text) {
+        public void StartTyping(string text) {
             if (typingRoutine != null) { StopCoroutine(typingRoutine); }
 
-            textComponent.text = text;
-            textComponent.ForceMeshUpdate();
+            this.text.text = text;
+            this.text.ForceMeshUpdate();
 
-            textComponent.maxVisibleCharacters = 0;
+            this.text.maxVisibleCharacters = 0;
 
             typingRoutine = StartCoroutine(TypeRoutine());
-            // Debug.Log("Starting new typewriter line");
         }
 
         public void CompleteInstantly() {
@@ -37,24 +37,32 @@ namespace DialogueSystem.UI {
 
             if (typingRoutine != null) { StopCoroutine(typingRoutine); }
 
-            textComponent.maxVisibleCharacters = textComponent.textInfo.characterCount;
+            text.maxVisibleCharacters = text.textInfo.characterCount;
 
             isTyping = false;
             OnTypingFinished?.Invoke();
         }
 
+        public void SetVisibleCharacters(int count) {
+            text.maxVisibleCharacters = count;
+        }
+
+        public void SetTextInstant(string value) {
+            text.text = value;
+        }
+
         private IEnumerator TypeRoutine() {
             isTyping = true;
 
-            int totalCharacters = textComponent.textInfo.characterCount;
+            int totalCharacters = text.textInfo.characterCount;
 
             float delay = 1f / charactersPerSecond;
 
             for (int i = 0; i < totalCharacters; i++) {
-                textComponent.maxVisibleCharacters = i;
+                text.maxVisibleCharacters = i;
                 yield return new WaitForSeconds(delay);
             }
-            textComponent.maxVisibleCharacters = totalCharacters;
+            text.maxVisibleCharacters = totalCharacters;
             
             isTyping = false;
             typingRoutine = null;

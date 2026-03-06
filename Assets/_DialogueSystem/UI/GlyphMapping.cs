@@ -1,4 +1,4 @@
-﻿using InputSystem.Runtime;
+﻿using DialogueSystem.Input;
 using UnityEngine;
 
 namespace DialogueSystem.UI {
@@ -15,7 +15,7 @@ namespace DialogueSystem.UI {
         
         public GlyphEntry[] Entries;
 
-        public string GetSpriteName(string token, InputSystem.Runtime.InputDeviceType device) {
+        public string GetSpriteName(string token, Input.InputDeviceType device) {
             for (int index = 0; index < Entries.Length; index++) {
                 if (Entries[index].TokenName == token) {
                     return device == InputDeviceType.Gamepad 

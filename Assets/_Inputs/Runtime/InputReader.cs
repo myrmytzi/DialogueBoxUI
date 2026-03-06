@@ -2,19 +2,18 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace InputSystem.Runtime {
+namespace DialogueSystem.Input {
     public enum InputDeviceType {
         KeyboardMouse,
         Gamepad
     }
 
     public class InputReader : MonoBehaviour {
-
         public event Action NextPressed;
         public event Action SkipPressed;
 
         public event Action<InputDeviceType> OnInputDeviceChanged;
-        
+
         private DialogueInputActions inputActionsAsset;
 
         private InputDeviceType currentDevice = InputDeviceType.KeyboardMouse;
@@ -66,16 +65,21 @@ namespace InputSystem.Runtime {
                 OnInputDeviceChanged?.Invoke(currentDevice);
             }
         }
-        
-        #if UNITY_EDITOR
+
+
         [ContextMenu("Simulate Gamepad Input")]
         public void SimulateGamepad() {
             InputDeviceType oldDevice = currentDevice;
             currentDevice = InputDeviceType.Gamepad;
-            if (oldDevice != currentDevice) {
-                OnInputDeviceChanged?.Invoke(currentDevice);
-            }
+            if (oldDevice != currentDevice) { OnInputDeviceChanged?.Invoke(currentDevice); }
         }
-        #endif
+
+        [ContextMenu("Simulate Keyboard Input")]
+        public void SimulateKeyboard() {
+            InputDeviceType oldDevice = currentDevice;
+            currentDevice = InputDeviceType.KeyboardMouse;
+            if (oldDevice != currentDevice) { OnInputDeviceChanged?.Invoke(currentDevice); }
+        }
+
     }
 }

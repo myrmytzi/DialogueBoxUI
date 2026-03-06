@@ -13,7 +13,7 @@ namespace DialogueSystem.UI {
         }
 
         private void Start() {
-            typewriter.Play("Testing event firing.");
+            typewriter.StartTyping("Testing event firing.");
         }
 
         private void Update() {

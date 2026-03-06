@@ -6,7 +6,7 @@ namespace DialogueSystem.UI {
         [SerializeField] private TypewriterText typewriter;
 
         private void Start() {
-            typewriter.Play("Press [interact] to begin.");
+            typewriter.StartTyping("Press [interact] to begin.");
         }
 
         private void Update() {
